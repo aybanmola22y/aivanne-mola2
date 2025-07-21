@@ -73,26 +73,26 @@ export default function Home() {
               </motion.a>
             ))}
           </motion.nav>
-
-          {/* 🌗 Icon Toggle Button */}
-          <div className="flex justify-center mt-4">
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className="p-2 rounded-full border border-gray-400 hover:scale-110 transition duration-300"
-              aria-label="Toggle Theme"
-            >
-              {darkMode ? (
-                <Sun className="w-5 h-5 text-yellow-300" />
-              ) : (
-                <Moon className="w-5 h-5 text-blue-600" />
-              )}
-            </button>
-          </div>
         </div>
       </header>
 
+      {/* 🌗 Theme Toggle BELOW the header line */}
+      <div className="absolute top-20 w-full flex justify-center py-4 z-40">
+        <button
+          onClick={() => setDarkMode(!darkMode)}
+          className="p-2 rounded-full border border-gray-400 hover:scale-110 transition duration-300"
+          aria-label="Toggle Theme"
+        >
+          {darkMode ? (
+            <Sun className="w-5 h-5 text-yellow-300" />
+          ) : (
+            <Moon className="w-5 h-5 text-blue-600" />
+          )}
+        </button>
+      </div>
+
       {/* Centered Content */}
-      <div className="text-center">
+      <div className="text-center mt-32">
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
