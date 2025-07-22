@@ -58,8 +58,10 @@ export default function Home() {
         } min-h-screen flex flex-col items-center justify-center px-4 relative transition-colors duration-500`}
       >
         {/* Desktop Header */}
-        <header className={`hidden md:block absolute top-0 w-full z-50 border-b border-white/10 backdrop-blur-md ${
-          darkMode ? 'bg-[#0f172a]/80' : ''
+        <header className={`hidden md:block absolute top-0 w-full z-50 border-b backdrop-blur-md ${
+          darkMode
+            ? 'bg-[#0f172a]/80 border-white/10'
+            : 'bg-white/80 border-black/10'
         }`}>
           <div className="max-w-7xl mx-auto px-4 py-4">
             <motion.nav
