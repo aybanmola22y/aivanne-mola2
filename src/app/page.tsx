@@ -89,7 +89,9 @@ export default function Home() {
       </header>
 
       {/* Mobile Header */}
-      <header className="md:hidden fixed top-0 left-0 right-0 z-50 px-4 py-3 backdrop-blur-md border-b border-white/10">
+      <header className={`md:hidden fixed top-0 left-0 right-0 z-50 px-4 py-3 border-b ${
+        darkMode ? 'bg-black/90 border-white/10' : 'bg-white/90 border-black/10'
+      }`}>
         <div className="flex justify-between items-center">
           {/* Theme Toggle - Left */}
           <button
@@ -148,10 +150,10 @@ export default function Home() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: idx * 0.1 }}
-                    className={`py-4 text-lg font-medium border-b border-gray-200/20 transition duration-300 ${
+                    className={`py-4 text-lg font-medium transition duration-300 ${
                       darkMode
-                        ? 'text-gray-300 hover:text-white'
-                        : 'text-gray-700 hover:text-black'
+                        ? 'text-gray-300 hover:text-white border-b border-gray-700'
+                        : 'text-gray-700 hover:text-black border-b border-gray-300'
                     }`}
                   >
                     {item.text}
