@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { Sun, Moon, Menu, X } from 'lucide-react'; 
+import { Sun, Moon, Menu, X } from 'lucide-react';
 
 export default function Home() {
   const fullText = 'Aspiring Front-end Developer & Manual QA Tester';
@@ -22,7 +22,6 @@ export default function Home() {
 
   useEffect(() => {
     const speed = isDeleting ? 50 : 100;
-
     const timeout = setTimeout(() => {
       if (isDeleting) {
         setDisplayedText((prev) => prev.slice(0, -1));
@@ -55,11 +54,13 @@ export default function Home() {
       <main
         id="home"
         className={`${
-          darkMode ? 'bg-black text-white' : 'bg-white text-black'
+          darkMode ? 'bg-[#0f172a] text-white' : 'bg-white text-black'
         } min-h-screen flex flex-col items-center justify-center px-4 relative transition-colors duration-500`}
       >
         {/* Desktop Header */}
-        <header className="hidden md:block absolute top-0 w-full z-50 border-b border-white/10 backdrop-blur-md">
+        <header className={`hidden md:block absolute top-0 w-full z-50 border-b border-white/10 backdrop-blur-md ${
+          darkMode ? 'bg-[#0f172a]/80' : ''
+        }`}>
           <div className="max-w-7xl mx-auto px-4 py-4">
             <motion.nav
               initial={{ opacity: 0, y: -10 }}
@@ -95,7 +96,7 @@ export default function Home() {
         <header
           className={`md:hidden fixed top-0 left-0 right-0 z-50 px-4 py-3 border-b ${
             darkMode
-              ? 'bg-black/90 border-white/10'
+              ? 'bg-[#0f172a]/90 border-white/10'
               : 'bg-white/90 border-black/10'
           }`}
         >
@@ -142,7 +143,7 @@ export default function Home() {
                 exit={{ x: '100%' }}
                 transition={{ type: 'tween', duration: 0.3 }}
                 className={`absolute right-0 top-0 h-full w-64 ${
-                  darkMode ? 'bg-gray-900' : 'bg-white'
+                  darkMode ? 'bg-[#1e293b]' : 'bg-white'
                 } shadow-xl pt-20`}
                 onClick={(e) => e.stopPropagation()}
               >
