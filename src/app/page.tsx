@@ -2,8 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { Sun, Moon, Menu, X } from 'lucide-react';
-import AboutMe from './AboutMe'; 
+import { Sun, Moon, Menu, X } from 'lucide-react'; 
 
 export default function Home() {
   const fullText = 'Aspiring Front-end Developer & Manual QA Tester';
@@ -238,9 +237,6 @@ export default function Home() {
           &gt;
         </motion.a>
       </main>
-
-      {/* ✅ New About Me Section Below Homepage */}
-      <AboutMe darkMode={darkMode} />
     </>
   );
 }
