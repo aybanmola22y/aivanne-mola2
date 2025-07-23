@@ -160,7 +160,7 @@ export default function Contact({ darkMode }: ContactProps) {
                   darkMode ? 'text-gray-300' : 'text-gray-700'
                 }`}
               >
-                Name *
+                Name 
               </label>
               <input
                 type="text"
@@ -175,7 +175,7 @@ export default function Contact({ darkMode }: ContactProps) {
                     ? 'bg-[#0f172a] border-gray-600 text-white placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500'
                     : 'bg-white border-gray-300 text-black placeholder-gray-500 focus:ring-blue-500 focus:border-blue-500'
                 } ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
-                placeholder="Your full name"
+                placeholder=""
               />
             </div>
 
@@ -187,7 +187,7 @@ export default function Contact({ darkMode }: ContactProps) {
                   darkMode ? 'text-gray-300' : 'text-gray-700'
                 }`}
               >
-                Email *
+                Email 
               </label>
               <input
                 type="email"
@@ -202,7 +202,7 @@ export default function Contact({ darkMode }: ContactProps) {
                     ? 'bg-[#0f172a] border-gray-600 text-white placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500'
                     : 'bg-white border-gray-300 text-black placeholder-gray-500 focus:ring-blue-500 focus:border-blue-500'
                 } ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
-                placeholder="your.email@example.com"
+                placeholder=""
               />
             </div>
 
@@ -214,7 +214,7 @@ export default function Contact({ darkMode }: ContactProps) {
                   darkMode ? 'text-gray-300' : 'text-gray-700'
                 }`}
               >
-                Message *
+                Message 
               </label>
               <textarea
                 id="message"
@@ -229,7 +229,7 @@ export default function Contact({ darkMode }: ContactProps) {
                     ? 'bg-[#0f172a] border-gray-600 text-white placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500'
                     : 'bg-white border-gray-300 text-black placeholder-gray-500 focus:ring-blue-500 focus:border-blue-500'
                 } ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
-                placeholder="Tell me about your project or just say hello..."
+                placeholder=""
               />
             </div>
 
@@ -275,9 +275,6 @@ export default function Contact({ darkMode }: ContactProps) {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center mt-8"
         >
-          <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-            Usually reply within 24 hours
-          </p>
         </motion.div>
       </div>
     </section>
