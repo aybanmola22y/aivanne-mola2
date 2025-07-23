@@ -73,7 +73,7 @@ export default function Contact({ darkMode }: ContactProps) {
           <p className={`text-base md:text-lg leading-relaxed max-w-lg mx-auto ${
             darkMode ? 'text-gray-300' : 'text-gray-600'
           }`}>
-            Have a project in mind, or just want to say hi? I'd love to hear from you. Fill out the form and I'll get back to you as soon as possible.
+            Have a project in mind, or just want to say hi? I&apos;d love to hear from you. Fill out the form and I&apos;ll get back to you as soon as possible.
           </p>
         </motion.div>
 
