@@ -50,28 +50,28 @@ const techSkills: TechSkill[] = [
 
 const workExperiences: WorkExperience[] = [
   {
-    title: 'Vice President for External Campuses',
-    company: 'Vibe Coder at Palawan State University',
-    period: '2020 - Present',
-    description: 'Lorem ipsum is the most well known filler text and comes from various passages of a book from Cicero, written in 45 BC.'
+    title: 'Part-Time Data Encoder',
+    company: 'Lifesavers Drugtesting Center',
+    period: '2025 - Present',
+    description: 'Responsible for encoding clients personal information into the system.'
   },
   {
-    title: 'Vice President for External Campuses',
-    company: 'Vibe Coder at Palawan State University',
-    period: '2018 - 2020',
-    description: 'Lorem ipsum is the most well known filler text and comes from various passages of a book from Cicero, written in 45 BC.'
+    title: 'Part-Time Data Encoder',
+    company: 'Lifesavers Drugtesting Center',
+    period: '2025 - Present',
+    description: 'Responsible for encoding clients personal information into the system.'
   },
   {
-    title: 'Vice President for External Campuses',
-    company: 'Vibe Coder at Palawan State University',
-    period: '2018 - 2020',
-    description: 'Lorem ipsum is the most well known filler text and comes from various passages of a book from Cicero, written in 45 BC.'
+    title: 'Part-Time Data Encoder',
+    company: 'Lifesavers Drugtesting Center',
+    period: '2025 - Present',
+    description: 'Responsible for encoding clients personal information into the system.'
   },
   {
-    title: 'Vice President for External Campuses',
-    company: 'Vibe Coder at Palawan State University',
-    period: '2018 - 2020',
-    description: 'Lorem ipsum is the most well known filler text and comes from various passages of a book from Cicero, written in 45 BC.'
+    title: 'Part-Time Data Encoder',
+    company: 'Lifesavers Drugtesting Center',
+    period: '2025 - Present',
+    description: 'Responsible for encoding clients personal information into the system.'
   }
 ];
 
@@ -146,7 +146,7 @@ export default function Skills({ darkMode }: SkillsProps) {
             
             <motion.div
               variants={containerVariants}
-              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
+              className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4"
             >
               {techSkills.map((skill, index) => (
                 <motion.div
@@ -161,15 +161,15 @@ export default function Skills({ darkMode }: SkillsProps) {
                     darkMode
                       ? 'bg-[#1e293b] border-gray-700 hover:bg-[#334155]'
                       : 'bg-gray-50 border-gray-200 hover:bg-gray-100'
-                  } border rounded-lg p-6 text-center transition-all duration-300 cursor-pointer group`}
+                  } border rounded-lg p-3 sm:p-4 md:p-6 text-center transition-all duration-300 cursor-pointer group`}
                 >
-                  <div className="flex flex-col items-center space-y-3">
+                  <div className="flex flex-col items-center space-y-2 sm:space-y-3">
                     <skill.icon 
-                      className={`w-12 h-12 ${
+                      className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 ${
                         darkMode ? skill.color : skill.color
                       } group-hover:scale-110 transition-transform duration-300`}
                     />
-                    <span className="font-medium text-sm md:text-base">
+                    <span className="font-medium text-xs sm:text-sm md:text-base leading-tight">
                       {skill.name}
                     </span>
                   </div>
@@ -206,9 +206,9 @@ export default function Skills({ darkMode }: SkillsProps) {
                   }}
                   className={`${
                     darkMode
-                      ? 'border-l-blue-400 bg-[#1e293b]/50'
-                      : 'border-l-blue-500 bg-gray-50'
-                  } border-l-4 pl-6 py-4 rounded-r-lg transition-all duration-300`}
+                      ? 'bg-[#1e293b]/50'
+                      : 'bg-gray-50'
+                  } px-6 py-4 rounded-lg transition-all duration-300`}
                 >
                   <div className="flex items-start space-x-4">
                     <div className={`w-3 h-3 rounded-full mt-2 ${

@@ -21,44 +21,44 @@ export default function Projects({ darkMode }: ProjectsProps) {
     {
       id: 1,
       title: 'OJT Time Logging',
-      description: 'OJT Time Logging is a project designed to help track and manage the time spent during on-the-job training. It allows trainees to log their daily hours, tasks, and progress.',
-      image: '/images/ojt-time-logging.jpg', // You'll need to add your actual images
-      demoUrl: '#'
+      description: 'OJT Time Logging is a project designed to help track and manage the time spent during on-the-job training.',
+      image: '/images/ojt-time-logging.jpg',
+      demoUrl: 'https://ojt-log.vercel.app/'
     },
     {
       id: 2,
       title: 'Book of Love',
       description: 'Book of Love is an online diary that serves as a digital scrapbook of cherished memories.',
       image: '/images/book-of-love.jpg',
-      demoUrl: '#'
+      demoUrl: 'https://book-of-love.vercel.app/'
     },
     {
       id: 3,
       title: 'Virtual Cake',
-      description: 'Virtual Cake is an interactive web app that lets a person experience a digital cake. They can add candles and blow them out using their device\'s microphone or earphones.',
+      description: 'Virtual Cake is an interactive web app that lets a person experience a digital cake.',
       image: '/images/virtual-cake.jpg',
-      demoUrl: '#'
+      demoUrl: 'https://hbd-po.vercel.app/'
     },
     {
       id: 4,
       title: 'OJT Time Logging',
-      description: 'OJT Time Logging is a project designed to help track and manage the time spent during on-the-job training. It allows trainees to log their daily hours, tasks, and progress.',
+      description: 'OJT Time Logging is a project designed to help track and manage the time spent during on-the-job training.',
       image: '/images/ojt-time-logging.jpg',
-      demoUrl: '#'
+      demoUrl: 'https://ojt-log.vercel.app/'
     },
     {
       id: 5,
       title: 'Book of Love',
       description: 'Book of Love is an online diary that serves as a digital scrapbook of cherished memories.',
       image: '/images/book-of-love.jpg',
-      demoUrl: '#'
+      demoUrl: 'https://book-of-love.vercel.app/'
     },
     {
       id: 6,
       title: 'Virtual Cake',
-      description: 'Virtual Cake is an interactive web app that lets a person experience a digital cake. They can add candles and blow them out using their device\'s microphone or earphones.',
+      description: 'Virtual Cake is an interactive web app that lets a person experience a digital cake.',
       image: '/images/virtual-cake.jpg',
-      demoUrl: '#'
+      demoUrl: 'https://hbd-po.vercel.app/'
     }
   ];
 
@@ -88,7 +88,7 @@ export default function Projects({ darkMode }: ProjectsProps) {
       id="projects"
       className={`${
         darkMode ? 'bg-[#0f172a] text-white' : 'bg-white text-black'
-      } min-h-screen py-20 px-4 transition-colors duration-500`}
+      } min-h-screen py-16 px-4 transition-colors duration-500`}
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Title */}
@@ -97,9 +97,9 @@ export default function Projects({ darkMode }: ProjectsProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className={`text-4xl md:text-6xl font-bold ${
+          <h2 className={`text-4xl md:text-5xl font-bold ${
             darkMode ? 'text-white' : 'text-black'
           }`}>
             Projects
@@ -112,7 +112,7 @@ export default function Projects({ darkMode }: ProjectsProps) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
         >
           {projects.map((project) => (
             <motion.div
@@ -122,15 +122,15 @@ export default function Projects({ darkMode }: ProjectsProps) {
                 darkMode 
                   ? 'bg-[#1e293b] border-gray-700' 
                   : 'bg-gray-50 border-gray-200'
-              } rounded-lg border shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col`}
+              } rounded-lg border shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col h-80`}
             >
               {/* Project Image */}
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-40 overflow-hidden">
                 <div className={`w-full h-full ${
                   darkMode ? 'bg-gray-700' : 'bg-gray-300'
                 } flex items-center justify-center`}>
                   {/* Placeholder for project image */}
-                  <div className={`text-6xl ${
+                  <div className={`text-4xl ${
                     darkMode ? 'text-gray-500' : 'text-gray-400'
                   }`}>
                     📱
@@ -147,14 +147,14 @@ export default function Projects({ darkMode }: ProjectsProps) {
               </div>
 
               {/* Project Content */}
-              <div className="p-6 flex flex-col h-full">
-                <h3 className={`text-xl font-bold mb-3 ${
+              <div className="p-4 flex flex-col h-40">
+                <h3 className={`text-lg font-bold mb-2 ${
                   darkMode ? 'text-white' : 'text-black'
                 }`}>
                   {project.title}
                 </h3>
                 
-                <p className={`text-sm leading-relaxed mb-4 flex-grow ${
+                <p className={`text-sm leading-relaxed mb-3 flex-grow overflow-hidden ${
                   darkMode ? 'text-gray-300' : 'text-gray-600'
                 }`}>
                   {project.description}
