@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { Send } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 
 interface ContactProps {
   darkMode: boolean;
@@ -14,6 +14,8 @@ interface FormData {
   message: string;
 }
 
+type SubmissionState = 'idle' | 'submitting' | 'success' | 'error';
+
 export default function Contact({ darkMode }: ContactProps) {
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -21,7 +23,11 @@ export default function Contact({ darkMode }: ContactProps) {
     message: ''
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionState, setSubmissionState] = useState<SubmissionState>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  // Replace 'YOUR_FORM_ID' with your actual Formspree form ID
+  const FORMSPREE_URL = 'https://formspree.io/f/mqalplva';
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -29,25 +35,57 @@ export default function Contact({ darkMode }: ContactProps) {
       ...prev,
       [name]: value
     }));
+    
+    // Clear any previous error when user starts typing
+    if (submissionState === 'error') {
+      setSubmissionState('idle');
+      setErrorMessage('');
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
-      setIsSubmitting(false);
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        message: ''
+    setSubmissionState('submitting');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _replyto: formData.email, // This tells Formspree to set reply-to header
+        }),
       });
-      // You can add success message here
-    }, 2000);
+
+      if (response.ok) {
+        setSubmissionState('success');
+        // Reset form after successful submission
+        setFormData({
+          name: '',
+          email: '',
+          message: ''
+        });
+        
+        // Reset to idle state after 5 seconds
+        setTimeout(() => {
+          setSubmissionState('idle');
+        }, 5000);
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      setSubmissionState('error');
+      setErrorMessage('Failed to send message. Please try again or contact me directly.');
+      console.error('Form submission error:', error);
+    }
   };
+
+  const isSubmitting = submissionState === 'submitting';
 
   return (
     <section
@@ -77,6 +115,30 @@ export default function Contact({ darkMode }: ContactProps) {
           </p>
         </motion.div>
 
+        {/* Success Message */}
+        {submissionState === 'success' && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-6 p-4 rounded-lg bg-green-50 border border-green-200 text-green-800 flex items-center gap-3"
+          >
+            <CheckCircle className="w-5 h-5 flex-shrink-0" />
+            <p>Thank you! Your message has been sent successfully. I'll get back to you soon.</p>
+          </motion.div>
+        )}
+
+        {/* Error Message */}
+        {submissionState === 'error' && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-6 p-4 rounded-lg bg-red-50 border border-red-200 text-red-800 flex items-center gap-3"
+          >
+            <AlertCircle className="w-5 h-5 flex-shrink-0" />
+            <p>{errorMessage}</p>
+          </motion.div>
+        )}
+
         {/* Contact Form */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -98,7 +160,7 @@ export default function Contact({ darkMode }: ContactProps) {
                   darkMode ? 'text-gray-300' : 'text-gray-700'
                 }`}
               >
-                Name
+                Name 
               </label>
               <input
                 type="text"
@@ -107,11 +169,12 @@ export default function Contact({ darkMode }: ContactProps) {
                 value={formData.name}
                 onChange={handleChange}
                 required
+                disabled={isSubmitting}
                 className={`w-full px-4 py-3 rounded-lg border transition-all duration-200 focus:outline-none focus:ring-2 ${
                   darkMode
                     ? 'bg-[#0f172a] border-gray-600 text-white placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500'
                     : 'bg-white border-gray-300 text-black placeholder-gray-500 focus:ring-blue-500 focus:border-blue-500'
-                }`}
+                } ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                 placeholder=""
               />
             </div>
@@ -124,7 +187,7 @@ export default function Contact({ darkMode }: ContactProps) {
                   darkMode ? 'text-gray-300' : 'text-gray-700'
                 }`}
               >
-                Email
+                Email 
               </label>
               <input
                 type="email"
@@ -133,11 +196,12 @@ export default function Contact({ darkMode }: ContactProps) {
                 value={formData.email}
                 onChange={handleChange}
                 required
+                disabled={isSubmitting}
                 className={`w-full px-4 py-3 rounded-lg border transition-all duration-200 focus:outline-none focus:ring-2 ${
                   darkMode
                     ? 'bg-[#0f172a] border-gray-600 text-white placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500'
                     : 'bg-white border-gray-300 text-black placeholder-gray-500 focus:ring-blue-500 focus:border-blue-500'
-                }`}
+                } ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                 placeholder=""
               />
             </div>
@@ -150,7 +214,7 @@ export default function Contact({ darkMode }: ContactProps) {
                   darkMode ? 'text-gray-300' : 'text-gray-700'
                 }`}
               >
-                Message
+                Message 
               </label>
               <textarea
                 id="message"
@@ -158,12 +222,13 @@ export default function Contact({ darkMode }: ContactProps) {
                 value={formData.message}
                 onChange={handleChange}
                 required
+                disabled={isSubmitting}
                 rows={6}
                 className={`w-full px-4 py-3 rounded-lg border transition-all duration-200 focus:outline-none focus:ring-2 resize-none ${
                   darkMode
                     ? 'bg-[#0f172a] border-gray-600 text-white placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500'
                     : 'bg-white border-gray-300 text-black placeholder-gray-500 focus:ring-blue-500 focus:border-blue-500'
-                }`}
+                } ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                 placeholder=""
               />
             </div>
@@ -171,11 +236,11 @@ export default function Contact({ darkMode }: ContactProps) {
             {/* Submit Button */}
             <motion.button
               type="submit"
-              disabled={isSubmitting}
+              disabled={isSubmitting || submissionState === 'success'}
               whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
               whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
               className={`w-full py-4 px-6 rounded-lg font-semibold text-white transition-all duration-200 flex items-center justify-center gap-2 ${
-                isSubmitting
+                isSubmitting || submissionState === 'success'
                   ? 'bg-blue-400 cursor-not-allowed'
                   : 'bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
               } ${
@@ -186,6 +251,11 @@ export default function Contact({ darkMode }: ContactProps) {
                 <>
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                   Sending...
+                </>
+              ) : submissionState === 'success' ? (
+                <>
+                  <CheckCircle className="w-5 h-5" />
+                  Message Sent!
                 </>
               ) : (
                 <>
@@ -205,6 +275,9 @@ export default function Contact({ darkMode }: ContactProps) {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center mt-8"
         >
+          <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+            Usually reply within 24 hours
+          </p>
         </motion.div>
       </div>
     </section>
