@@ -27,7 +27,7 @@ export default function Contact({ darkMode }: ContactProps) {
   const [errorMessage, setErrorMessage] = useState('');
 
   // Replace 'YOUR_FORM_ID' with your actual Formspree form ID
-  const FORMSPREE_URL = 'https://formspree.io/f/mqalplva';
+  const FORMSPREE_URL = 'https://formspree.io/f/YOUR_FORM_ID';
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -123,7 +123,7 @@ export default function Contact({ darkMode }: ContactProps) {
             className="mb-6 p-4 rounded-lg bg-green-50 border border-green-200 text-green-800 flex items-center gap-3"
           >
             <CheckCircle className="w-5 h-5 flex-shrink-0" />
-            <p>Thank you! Your message has been sent successfully. I'll get back to you soon.</p>
+            <p>Thank you! Your message has been sent successfully. I&apos;ll get back to you soon.</p>
           </motion.div>
         )}
 
@@ -160,7 +160,7 @@ export default function Contact({ darkMode }: ContactProps) {
                   darkMode ? 'text-gray-300' : 'text-gray-700'
                 }`}
               >
-                Name 
+                Name *
               </label>
               <input
                 type="text"
@@ -175,7 +175,7 @@ export default function Contact({ darkMode }: ContactProps) {
                     ? 'bg-[#0f172a] border-gray-600 text-white placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500'
                     : 'bg-white border-gray-300 text-black placeholder-gray-500 focus:ring-blue-500 focus:border-blue-500'
                 } ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
-                placeholder=""
+                placeholder="Your full name"
               />
             </div>
 
@@ -187,7 +187,7 @@ export default function Contact({ darkMode }: ContactProps) {
                   darkMode ? 'text-gray-300' : 'text-gray-700'
                 }`}
               >
-                Email 
+                Email *
               </label>
               <input
                 type="email"
@@ -202,7 +202,7 @@ export default function Contact({ darkMode }: ContactProps) {
                     ? 'bg-[#0f172a] border-gray-600 text-white placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500'
                     : 'bg-white border-gray-300 text-black placeholder-gray-500 focus:ring-blue-500 focus:border-blue-500'
                 } ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
-                placeholder=""
+                placeholder="your.email@example.com"
               />
             </div>
 
@@ -214,7 +214,7 @@ export default function Contact({ darkMode }: ContactProps) {
                   darkMode ? 'text-gray-300' : 'text-gray-700'
                 }`}
               >
-                Message 
+                Message *
               </label>
               <textarea
                 id="message"
@@ -229,7 +229,7 @@ export default function Contact({ darkMode }: ContactProps) {
                     ? 'bg-[#0f172a] border-gray-600 text-white placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500'
                     : 'bg-white border-gray-300 text-black placeholder-gray-500 focus:ring-blue-500 focus:border-blue-500'
                 } ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
-                placeholder=""
+                placeholder="Tell me about your project or just say hello..."
               />
             </div>
 
