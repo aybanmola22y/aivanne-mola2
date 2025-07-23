@@ -3,6 +3,9 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { Sun, Moon, Menu, X } from 'lucide-react';
+import Skills from './Skills';
+import Projects from './Projects';
+import Contact from './Contact';
 
 export default function Home() {
   const fullText = 'Aspiring Front-end Developer & Manual QA Tester';
@@ -240,6 +243,9 @@ export default function Home() {
           &gt;
         </motion.a>
       </main>
+       <Skills darkMode={darkMode} />
+       <Projects darkMode={darkMode} />
+       <Contact darkMode={darkMode} />
     </>
   );
 }
